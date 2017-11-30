@@ -249,7 +249,7 @@
         <!--Term Name-->
         <scene sceneID="0rM-Ee-NO6">
             <objects>
-                <viewController id="JdV-ad-2h6" customClass="AddClassViewController" customModule="SSUSchedulePlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JdV-ad-2h6" customClass="AddTermViewController" customModule="SSUSchedulePlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1M4-5g-876">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,10 +259,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U6R-jB-W66">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="classTableViewCell" id="U6R-jB-W66" customClass="ClassTableViewCell" customModule="SSUSchedulePlanner" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U6R-jB-W66" id="yDl-fa-fOA">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U6R-jB-W66" id="yDl-fa-fOA" customClass="ClassTableViewCell" customModule="SSUSchedulePlanner" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -282,6 +282,9 @@
                         <viewLayoutGuide key="safeArea" id="hb4-vl-HUi"/>
                     </view>
                     <navigationItem key="navigationItem" title="Term Name" id="P8k-4e-Jgw"/>
+                    <connections>
+                        <outlet property="classTable" destination="G89-Kz-mVk" id="4rW-dZ-OA0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyW-gh-LqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

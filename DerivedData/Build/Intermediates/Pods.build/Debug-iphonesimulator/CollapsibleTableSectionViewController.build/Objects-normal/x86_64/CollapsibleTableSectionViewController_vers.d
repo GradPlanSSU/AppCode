@@ -1,2 +1,0 @@
-dependencies: \
-  /Users/student/Desktop/SSUSchedulePlanner/DerivedData/Build/Intermediates/Pods.build/Debug-iphonesimulator/CollapsibleTableSectionViewController.build/DerivedSources/CollapsibleTableSectionViewController_vers.c
