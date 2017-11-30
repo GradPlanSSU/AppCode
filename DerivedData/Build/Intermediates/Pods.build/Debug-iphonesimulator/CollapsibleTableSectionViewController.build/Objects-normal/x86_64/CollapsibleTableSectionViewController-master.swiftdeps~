@@ -1,0 +1,6 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
+options: "61665f38aaa8ece1b2b5fa95b36174b2"
+build_time: [1511897307, 506585000]
+inputs:
+  "/Users/student/Desktop/SSUSchedulePlanner/Pods/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.swift": [1510621402, 0]
+  "/Users/student/Desktop/SSUSchedulePlanner/Pods/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController/CollapsibleTableViewHeader.swift": [1510622884, 0]

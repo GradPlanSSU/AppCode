@@ -1,0 +1,10 @@
+framework module CollapsibleTableSectionViewController {
+  umbrella header "CollapsibleTableSectionViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CollapsibleTableSectionViewController.__Swift {
+    exclude header "CollapsibleTableSectionViewController-Swift.h"
+}
