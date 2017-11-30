@@ -16,6 +16,8 @@ class MySchedulesDetailedViewController: UITableViewController {
     
     var sections = termData
     
+    var terms = [Term]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,11 +35,11 @@ class MySchedulesDetailedViewController: UITableViewController {
 extension MySchedulesDetailedViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return terms.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].collapsed ? 0 : sections[section].items.count
+        return (terms[section].classes?.count)!
     }
     
     // Cell
@@ -45,11 +47,16 @@ extension MySchedulesDetailedViewController {
         let cell: CollapsibleTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ??
             CollapsibleTableViewCell(style: .default, reuseIdentifier: "cell")
         
+        let term: Term = terms[indexPath.section]
+        cell.nameLabel.text = term.termName
+        cell.detailLabel.text = "More Detail Here"
+        /*
         let item: Item = sections[indexPath.section].items[indexPath.row]
         
         cell.nameLabel.text = item.name
         cell.detailLabel.text = item.detail
-        
+         */
+ 
         return cell
     }
     
@@ -61,7 +68,7 @@ extension MySchedulesDetailedViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
-        header.titleLabel.text = sections[section].name
+        header.titleLabel.text = terms[section].termName
         header.arrowLabel.text = ">"
         header.setCollapsed(sections[section].collapsed)
         

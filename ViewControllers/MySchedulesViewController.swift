@@ -130,6 +130,9 @@ class MySchedulesViewController: UITableViewController {
         let destinationVC : MySchedulesDetailedViewController = segue.destination as! MySchedulesDetailedViewController
        // destinationVC.schedule = self.schedules[selectedRow]
         destinationVC.title = self.schedules[selectedRow].scheduleName
+        
+        
+        destinationVC.terms = Array(self.schedules[selectedRow].terms!) as! [Term]
     }
 
     
