@@ -8,6 +8,14 @@
 
 import UIKit
 
-class Courses: NSObject {
+class Courses: NSObject, Codable {
 
+    
+    override init() {
+        courses = [Course]()
+        super.init()
+    }
+    var courses: [Course]
+    // example of filter var newcourses: [Course] = courses.filter {$0.catalog > somenumber }
+    
 }

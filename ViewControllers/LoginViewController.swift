@@ -59,10 +59,12 @@ class LoginViewController: UIViewController {
                 var student = try! JSONDecoder().decode(Student.self, from: data)
                 DLToken.token = student.token
                 print(DLToken.token)
-                
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: "LoginToMainMenu", sender: self)
+                }
             }
             task.resume()
-            performSegue(withIdentifier: "LoginToMainMenu", sender: self)
+            
         }
         
 

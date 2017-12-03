@@ -11,7 +11,19 @@ import CoreData
 
 class ClassDescriptionViewController: UIViewController {
 
-    @IBOutlet weak var saveClass: UIBarButtonItem!
+    //@IBOutlet weak var saveClass: UIBarButtonItem!
+    
+    @IBAction func didClickSave(_ sender: Any) {
+        if let navController = self.navigationController {
+            let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
+            let prevController: AddTermViewController = viewControllers[viewControllers.count - 4] as! AddTermViewController
+            self.saveClass()
+            prevController.terms = self.terms
+            prevController.termIndex = self.termIndex
+            navController.popToViewController(prevController, animated: true)
+        }
+        
+    }
     
     var clickedCell = IndexPath()
     
@@ -36,15 +48,14 @@ class ClassDescriptionViewController: UIViewController {
         
         guard segue.identifier == "saveClassSegue" else { return }
         let destinationVC : AddTermViewController = segue.destination as! AddTermViewController
-        self.saveClass(destinationVC)
+        //self.saveClass(destinationVC)
         destinationVC.terms = self.terms
         destinationVC.termIndex = self.termIndex
        // destinationVC.classTable.reloadData()
         // self.saveClass(destinationVC)
-        
     }
 
-    func saveClass(_ vc: AddTermViewController) {
+    func saveClass() {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

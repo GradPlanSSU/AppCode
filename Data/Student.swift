@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Student: NSObject {
+class Student: NSObject, Codable{
     override init(){
         fname = ""
         lname = ""

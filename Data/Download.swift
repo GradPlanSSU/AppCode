@@ -9,7 +9,10 @@
 import Foundation
 
 struct DLToken{
-    static var token = ""
+    static var token: String = ""
+}
+struct CourseList{
+    static var courses: Courses = Courses()
 }
 
 class Download: NSObject {

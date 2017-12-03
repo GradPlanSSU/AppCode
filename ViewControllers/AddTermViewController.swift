@@ -22,6 +22,14 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var clickedCell = IndexPath()
     
+    @IBAction func savedTerm(_ sender: Any) {
+        if let navController = self.navigationController {
+            let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
+            let prevController: CreateScheduleViewController = viewControllers[viewControllers.count - 2] as! CreateScheduleViewController
+            prevController.terms = self.terms
+            navController.popToViewController(prevController, animated: true)
+        }
+    }
     @IBOutlet weak var classTable: UITableView!
     
     @IBAction func clickedAddClass(_ sender: Any) {
@@ -46,49 +54,14 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("Number Of Terms: \(terms.count)")
         print("Number Of Classes: \(classes.count)")
         classTable.reloadData()
-        /*
- 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest: NSFetchRequest<Class> = Class.fetchRequest()
-        do
-        {
-            let classes = try context.fetch(fetchRequest)
-            self.classes = classes
-            self.classTable.reloadData()
-            print("Fetched Classes From CoreData")
-        }
-        catch
-        {
-            print("Error in Retrieving Classes")
-        }
-         */
+   
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        /*
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest: NSFetchRequest<Class> = Class.fetchRequest()
-        do
-        {
-            let classes = try context.fetch(fetchRequest)
-            self.classes = classes
-            self.classTable.reloadData()
-            print("Fetched Classes From CoreData")
-        }
-        catch
-        {
-            print("Error in Retrieving Classes")
-        }
-        */
-        
-        // print("Count of classes: \(classes.count)")
-        self.classTable.reloadData()
+        classes = Array(terms[termIndex].classes!) as! [Class]
+        classTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -141,13 +114,7 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let destinationVC : CreateScheduleViewController = segue.destination as! CreateScheduleViewController
         destinationVC.terms = self.terms
-       // destinationVC.termTable.reloadData()
-        
-   //     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-   //     let context = appDelegate.persistentContainer.viewContext
-    //    let term = Term(context: context)
-    
-        // saveSchedule(destinationVC)
+
     }
     /*
     // MARK: - Navigation
