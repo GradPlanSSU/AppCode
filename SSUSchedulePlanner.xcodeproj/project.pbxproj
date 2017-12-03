@@ -40,6 +40,7 @@
 		3F49D6441FCDE82E001D404A /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D63E1FCDE82E001D404A /* Schedule+CoreDataProperties.swift */; };
 		3F49D64A1FCDED31001D404A /* AddTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D6491FCDED31001D404A /* AddTermViewController.swift */; };
 		3F9848A71FD23DFD0095C7B4 /* ClassDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */; };
+		3FDC0F691FD39B60007334D2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC0F681FD39B60007334D2 /* Student.swift */; };
 		3FE957B91FB3B8030004479E /* MySchedulesDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE957B81FB3B8030004479E /* MySchedulesDetailedViewController.swift */; };
 		3FE957BB1FB3BA5C0004479E /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE957BA1FB3BA5C0004479E /* ClassTableViewCell.swift */; };
 		6A284D810294D473CB525B9A /* Pods_SSUSchedulePlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D56827528EBE3B187D14634 /* Pods_SSUSchedulePlannerUITests.framework */; };
@@ -106,6 +107,7 @@
 		3F49D63E1FCDE82E001D404A /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3F49D6491FCDED31001D404A /* AddTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTermViewController.swift; sourceTree = "<group>"; };
 		3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDescriptionViewController.swift; sourceTree = "<group>"; };
+		3FDC0F681FD39B60007334D2 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		3FE957B81FB3B8030004479E /* MySchedulesDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchedulesDetailedViewController.swift; sourceTree = "<group>"; };
 		3FE957BA1FB3BA5C0004479E /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		51B545520D2D8B42006726E7 /* Pods-SSUSchedulePlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSUSchedulePlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSUSchedulePlanner/Pods-SSUSchedulePlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				3F1FABFA1FD373A600666682 /* Download.swift */,
 				09EEFC501FBBEFFF00EF6F04 /* ExampleData.swift */,
+				3FDC0F681FD39B60007334D2 /* Student.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				094EC7DB1FCE3A7A009A5F70 /* Term+CoreDataClass.swift in Sources */,
 				3F0602E81FCA46F600E5BB96 /* TermTableViewCell.swift in Sources */,
 				09DB7C821FB15FC900C609D7 /* SSUSchedulePlanner.xcdatamodeld in Sources */,
+				3FDC0F691FD39B60007334D2 /* Student.swift in Sources */,
 				094EC7D91FCE3A7A009A5F70 /* Class+CoreDataClass.swift in Sources */,
 				09EEFC531FBBF0B200EF6F04 /* Extensions.swift in Sources */,
 			);

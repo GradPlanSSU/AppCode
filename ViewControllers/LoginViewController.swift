@@ -56,16 +56,9 @@ class LoginViewController: UIViewController {
                     print("response = \(response!)")
                 }
               
-                let responseString = String(data: data, encoding: .utf8)
-                print("responseString = \(responseString!)")
-                
-                let myStringArr = responseString?.components(separatedBy: "\"")
-                print(myStringArr)
-                let token = myStringArr![17]
-                print("Token: ")
-                print(token)
-                
-                DLToken.token = token
+                var student = try! JSONDecoder().decode(Student.self, from: data)
+                DLToken.token = student.token
+                print(DLToken.token)
                 
             }
             task.resume()
