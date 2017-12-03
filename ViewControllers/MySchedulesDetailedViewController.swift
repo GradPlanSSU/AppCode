@@ -12,16 +12,14 @@ import CollapsibleTableSectionViewController
 class MySchedulesDetailedViewController: UITableViewController {
 
     // var schedule = Schedule()
-    
-    
+
+  //  var sections = Section(name: "", items: [Item])
     var sections = termData
-    
     var terms = [Term]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Auto resizing the height of the cell
+         // Auto resizing the height of the cell
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
     
@@ -36,6 +34,7 @@ extension MySchedulesDetailedViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return terms.count
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,12 +43,16 @@ extension MySchedulesDetailedViewController {
     
     // Cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell: CollapsibleTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ??
             CollapsibleTableViewCell(style: .default, reuseIdentifier: "cell")
         
-        let term: Term = terms[indexPath.section]
-        cell.nameLabel.text = term.termName
-        cell.detailLabel.text = "More Detail Here"
+        // let term: Term = terms[indexPath.section]
+        let classes = Array(self.terms[indexPath.section].classes!) as! [Class]
+        
+        cell.nameLabel.text = classes[indexPath.row].class_Name
+        cell.detailLabel.text = "1 Unit"
+       
         /*
         let item: Item = sections[indexPath.section].items[indexPath.row]
         
@@ -69,7 +72,7 @@ extension MySchedulesDetailedViewController {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         
         header.titleLabel.text = terms[section].termName
-        header.arrowLabel.text = ">"
+       // header.arrowLabel.text = ">"
         header.setCollapsed(sections[section].collapsed)
         
         header.section = section

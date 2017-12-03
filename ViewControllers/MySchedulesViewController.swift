@@ -12,7 +12,7 @@ import CoreData
 
 class MySchedulesViewController: UITableViewController {
 
-    // University Light Blue
+    // University Dark Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -130,8 +130,6 @@ class MySchedulesViewController: UITableViewController {
         let destinationVC : MySchedulesDetailedViewController = segue.destination as! MySchedulesDetailedViewController
        // destinationVC.schedule = self.schedules[selectedRow]
         destinationVC.title = self.schedules[selectedRow].scheduleName
-        
-        
         destinationVC.terms = Array(self.schedules[selectedRow].terms!) as! [Term]
     }
 

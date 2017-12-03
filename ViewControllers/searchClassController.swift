@@ -18,9 +18,16 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var courseNumberText: UITextField!
     @IBOutlet weak var courseNumberDropDown: UIPickerView!
     
+    @IBOutlet weak var generalEducationAttributeText: UITextField!
+    
+    var terms = [Term]()
+    var termIndex = Int()
+    
     var subject = ["AMCS", "CS", "MATH"]
     var courseNumber = ["Less Than", "Exactly", "Greater Than"]
+    var courseAttribute = ["None", "A1: Critical Thinking", "C324: Critial Mashing Buttons"]
     
+    var picker = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +37,7 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         subjectDropDown.backgroundColor = UniversityDarkBlue
         courseNumberDropDown.backgroundColor = UniversityDarkBlue
-    /*
-        let bottomColor = UniversityDarkBlue
-        let topColor = UIColor.white
-        let gradient: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-        let gradientLocation: [Float] = [0.0, 1.0]
-        
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradient
-        gradientLayer.locations = gradientLocation as [NSNumber]
-        
-        gradientLayer.frame = self.view.bounds
-        subjectDropDown.layer.insertSublayer(gradientLayer, at: 0)
-        */
-        // Do any additional setup after loading the view.
+  
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,68 +51,112 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var countrows : Int = subject.count
-        if pickerView == courseNumberDropDown {
-            
-            countrows = self.courseNumber.count
+        
+        if picker == 0 {
+            return subject.count
+        }
+        if picker == 1 {
+            return courseNumber.count
+        }
+        if picker == 2 {
+            return courseAttribute.count
         }
         
-        return countrows
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == subjectDropDown {
-            
-            let titleRow = subject[row]
-            
-            return titleRow
-            
-        }
-            
-        else if pickerView == courseNumberDropDown{
-            let titleRow = courseNumber[row]
-            
-            return titleRow
-        }
-        
+    
         return ""
     }
     
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        
-        if pickerView == subjectDropDown {
-            self.subjectText.text = self.subject[row]
-            self.subjectDropDown.isHidden = true
+
+        if picker == 0 {
+            subjectText.text = subject[row]
         }
-            
-        else if pickerView == courseNumberDropDown{
-            self.courseNumberText.text = self.courseNumber[row]
-            self.courseNumberDropDown.isHidden = true
-            
+        if picker == 1 {
+            courseNumberText.text = courseNumber[row]
         }
+        if picker == 2 {
+            generalEducationAttributeText.text = courseAttribute[row]
+        }
+    
     }
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: 250,height: 200)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 200))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        vc.view.addSubview(pickerView)
         
+      
+
         if (textField == self.subjectText){
-            self.subjectDropDown.isHidden = false
+            picker = 0
+            let editRadiusAlert = UIAlertController(title: "Select Subject", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            editRadiusAlert.setValue(vc, forKey: "contentViewController")
+             editRadiusAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(alert: UIAlertAction!) in self.changeSubject()}))
+            
+            self.present(editRadiusAlert, animated: true)
             
         }
-        else if (textField == self.courseNumberText){
-            self.courseNumberDropDown.isHidden = false
+        
+        if (textField == self.courseNumberText){
+           // clicked Course number
             
+            picker = 1
+            let editRadiusAlert = UIAlertController(title: "Select Course Number Attribute", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            editRadiusAlert.setValue(vc, forKey: "contentViewController")
+            editRadiusAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(alert: UIAlertAction!) in self.changeCourse()}))
+            
+            self.present(editRadiusAlert, animated: true)
+            
+        }
+        
+        if (textField == self.generalEducationAttributeText) {
+        
+            print("Selected GenEd Thing")
+            picker = 2
+            let editRadiusAlert = UIAlertController(title: "Select Course Attribute", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            editRadiusAlert.setValue(vc, forKey: "contentViewController")
+            editRadiusAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {(alert: UIAlertAction!) in self.changeCourseAttribute()}))
+            
+            self.present(editRadiusAlert, animated: true)
         }
         
     }
     
+    func changeSubject() {
+        print("change Subject Called")
+    }
+    
+    func changeCourse() {
+        print("change Course Called")
+    }
+    
+    func changeCourseAttribute() {
+        print("change Course Attribute Called")
+    }
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
         var titleData = subject[row]
         
+        if picker == 1 {
+            titleData = courseNumber[row]
+        }
+        
+        if picker == 2 {
+            titleData = courseAttribute[row]
+        }
+        /*
         if pickerView == courseNumberDropDown {
             titleData = courseNumber[row]
             subjectDropDown.isHidden = false
@@ -126,22 +164,22 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
         else {
             courseNumberDropDown.isHidden = true
         }
+        */
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
+ 
         
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
-        
-        return myTitle
+       return myTitle
     }
 
     
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard segue.identifier == "SearchClassSegue" else { return }
+        let destinationVC : AddClassViewController = segue.destination as! AddClassViewController
+        destinationVC.terms = self.terms
+        destinationVC.termIndex = self.termIndex
+        return
     }
-    */
 
 }

@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
         let password = passwordInput.text
         
         // uncomment this out when you want login page to work
-        /*
+
         if (username?.characters.count)! < 4 || (password?.characters.count)! < 6 {
 
             print("Invalid Username and/or Password")
@@ -55,17 +55,26 @@ class LoginViewController: UIViewController {
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response!)")
                 }
-                
+              
                 let responseString = String(data: data, encoding: .utf8)
                 print("responseString = \(responseString!)")
+                
+                let myStringArr = responseString?.components(separatedBy: "\"")
+                print(myStringArr)
+                let token = myStringArr![17]
+                print("Token: ")
+                print(token)
+                
+                DLToken.token = token
+                
             }
             task.resume()
             performSegue(withIdentifier: "LoginToMainMenu", sender: self)
         }
         
-        */
+
         // comment this out when you want login page to work
-        performSegue(withIdentifier: "LoginToMainMenu", sender: self)
+       // performSegue(withIdentifier: "LoginToMainMenu", sender: self)
     }
     
     override func viewDidLoad() {

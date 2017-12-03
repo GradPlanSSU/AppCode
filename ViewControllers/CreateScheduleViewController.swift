@@ -14,6 +14,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
 
     // University Light Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
+     let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
     
     var termChoice = String()
     var yearString = String()
@@ -34,7 +35,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        termTable.backgroundColor = UIColor.lightGray
+        termTable.backgroundColor = lightGray
 
         editScheduleNameButton.setImage(#imageLiteral(resourceName: "edit"), for: .normal)
         
@@ -69,13 +70,15 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         // issue if more than 2 segues
         
         guard segue.identifier == "saveScheduleSegue" else {
-            
+            print("Going Into A Specific Term")
+            let AddTermDestinationVC : AddTermViewController = segue.destination as! AddTermViewController
             clickedCell = self.termTable.indexPathForSelectedRow!
-            let selectedRow = clickedCell.row
-            print (selectedRow)
+            AddTermDestinationVC.termIndex = clickedCell.row
+            AddTermDestinationVC.terms = self.terms
             return
-            
         }
+        
+        
         let destinationVC : MySchedulesViewController = segue.destination as! MySchedulesViewController
         saveSchedule(destinationVC)
         
@@ -245,8 +248,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     {
         termName = termChoice + " " + yearString
         print(termName)
-        
-        
+
         // Do we want to save to core data or save to schedule?
         
         // add term to CoreData and reload TableView
