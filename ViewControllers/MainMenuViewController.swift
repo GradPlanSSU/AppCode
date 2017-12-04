@@ -37,20 +37,6 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UniversityDarkBlue
- /*
-        //let backgroundImageFrame = UIImageView(frame: UIScreen.main.bounds)
-        let background = UIImage(named: "ssuLibrary.jpg")
-        var imageView : UIImageView!
-        
-        imageView = UIImageView(frame: UIScreen.main.bounds)
-        imageView.contentMode =  UIViewContentMode.scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.image = background
-        imageView.center = view.center
-        view.addSubview(imageView)
-        self.view.sendSubview(toBack: imageView)
-        imageView.alpha = 0.25
-    */
         
         ARRButton.backgroundColor = UIColor.white
         ARRButton.layer.borderColor = UIColor.white.cgColor
@@ -71,8 +57,8 @@ class MainMenuViewController: UIViewController {
         CreateScheduleButton.layer.borderWidth = 0
         CreateScheduleButton.layer.cornerRadius = 9
         
-        //var download = Download(withURLString: "http://blue.cs.sonoma.edu:8000/courses/catalog").useParams().useToken()
-        //CourseList.courses = download.download_request()
+        var download = Download(withURLString: "http://blue.cs.sonoma.edu:8000/courses/catalog").useParams().useToken()
+        CourseList.courses = download.download_request()
        // CreateScheduleButton.alpha = 0.70
  
         

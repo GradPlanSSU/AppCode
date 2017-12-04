@@ -16,6 +16,5 @@ class Courses: NSObject, Codable {
         super.init()
     }
     var courses: [Course]
-    // example of filter var newcourses: [Course] = courses.filter {$0.catalog > somenumber }
     
 }
