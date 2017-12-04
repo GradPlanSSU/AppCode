@@ -12,7 +12,7 @@ struct DLToken{
     static var token: String = ""
 }
 struct CourseList{
-    static var courses: Courses? = Courses()
+    //static var courses: Courses? = Courses()
 }
 
 class Download: NSObject {
@@ -32,25 +32,25 @@ class Download: NSObject {
         return self
     }
     func download_request<T: Codable>() -> T?{
-        if let url = URL(string: urlString) {
-            do {
-                let contents = try String(contentsOf: url)
+        //if let url = URL(string: urlString) {
+            //do {
+                //let contents = try String(contentsOf: url)
                 
-                if let data = contents.data(using: .utf8) {
-                    return try JSONDecoder().decode(T.self, from: data)
-                } else {
-                    return nil
-                }
+                //if let data = contents.data(using: .utf8) {
+                    //return try JSONDecoder().decode(T.self, from: data)
+                //} else {
+                    //return nil
+                //}
                 
-            } catch {
+            //} catch {
                 // contents could not be loaded
-                print("Could not load contents of URL")
-                return nil
-            }
-        } else {
+                //print("Could not load contents of URL")
+                //return nil
+            //}
+        //} else {
             // the URL was bad
-            print("URL not properly formatted or does not exist")
-            return nil
+            //print("URL not properly formatted or does not exist")
+            //return nil
         }
     }
 }

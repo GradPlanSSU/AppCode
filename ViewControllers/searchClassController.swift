@@ -24,13 +24,8 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var terms = [Term]()
     var termIndex = Int()
     
-    /*var subject = ["None", "AMCS", "ANTH", "ARTH", "ARTS", "ASTR", "BIOL", "BUS", "CALS"
-        , "CCJS", "CES", "CHEM", "COMS", "CS", "DNCE", "DRMA", "ECON", "EDEC", "EDEL",
-         "EDUC", "EE", "ENGL", "ENSP", "ES", "FILM", "FR", "GEOG", "GEOL", "GEP",
-         "GER", "GERN", "HD", "HIST", "HLTH", "HUM", "JWST", "KIN", "LIBS",
-         "LING", "MATH", "MUS", "NAMS", "NURS", "PHIL", "PHYS", "POLS", "PSY", "SCI",
-         "SOCI", "SPAN", "THAR", "UNIV", "WGS"]*/
-    var subject = [String]()
+
+    //var subject = [String]()
     var courseNumber = ["None", "Less Than", "Exactly", "Greater Than"]
     
     var courseAttribute = ["None", "(A1) Written and Oral Analysis", "(A2) Fundamentals of Comm",
@@ -46,12 +41,12 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var picker = 0
     
     override func viewDidLoad() {
-        var set: Set = Set<String>()
-        for c in CourseList.courses!.courses {
-            set.insert(c.subject)
-        }
-        subject = set.sorted()
-        subject.insert("None", at: 0)
+        //var set: Set = Set<String>()
+        //for c in CourseList.courses!.courses {
+            //set.insert(c.subject)
+        //}
+        //subject = set.sorted()
+        //subject.insert("None", at: 0)
         super.viewDidLoad()
     }
 
