@@ -2,7 +2,7 @@
 //  Class+CoreDataClass.swift
 //  SSUSchedulePlanner
 //
-//  Created by Ivan Lim on 11/28/17.
+//  Created by student on 12/3/17.
 //  Copyright © 2017 Ivan Lim. All rights reserved.
 //
 //

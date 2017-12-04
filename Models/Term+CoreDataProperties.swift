@@ -2,7 +2,7 @@
 //  Term+CoreDataProperties.swift
 //  SSUSchedulePlanner
 //
-//  Created by Ivan Lim on 11/28/17.
+//  Created by student on 12/4/17.
 //  Copyright © 2017 Ivan Lim. All rights reserved.
 //
 //
@@ -18,7 +18,7 @@ extension Term {
     }
 
     @NSManaged public var termName: String?
-    @NSManaged public var termUnits: Int16
+    @NSManaged public var termUnits: String?
     @NSManaged public var classes: NSSet?
     @NSManaged public var schedule: Schedule?
 

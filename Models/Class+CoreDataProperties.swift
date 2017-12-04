@@ -2,7 +2,7 @@
 //  Class+CoreDataProperties.swift
 //  SSUSchedulePlanner
 //
-//  Created by Ivan Lim on 11/28/17.
+//  Created by student on 12/3/17.
 //  Copyright © 2017 Ivan Lim. All rights reserved.
 //
 //
@@ -19,7 +19,10 @@ extension Class {
 
     @NSManaged public var class_Description: String?
     @NSManaged public var class_Name: String?
-    @NSManaged public var class_Units: Int16
+    @NSManaged public var class_Units: String?
+    @NSManaged public var catalog: String?
+    @NSManaged public var subject: String?
+    @NSManaged public var ge_designation: String?
     @NSManaged public var term: Term?
 
 }
