@@ -13,31 +13,46 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
  let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
     
     @IBOutlet weak var subjectText: UITextField!
-    @IBOutlet weak var subjectDropDown: UIPickerView!
     
     @IBOutlet weak var courseNumberText: UITextField!
-    @IBOutlet weak var courseNumberDropDown: UIPickerView!
+    
+    @IBOutlet weak var number: UITextField!
+    
     
     @IBOutlet weak var generalEducationAttributeText: UITextField!
     
     var terms = [Term]()
     var termIndex = Int()
     
-    var subject = ["AMCS", "CS", "MATH"]
-    var courseNumber = ["Less Than", "Exactly", "Greater Than"]
-    var courseAttribute = ["None", "A1: Critical Thinking", "C324: Critial Mashing Buttons"]
+    /*var subject = ["None", "AMCS", "ANTH", "ARTH", "ARTS", "ASTR", "BIOL", "BUS", "CALS"
+        , "CCJS", "CES", "CHEM", "COMS", "CS", "DNCE", "DRMA", "ECON", "EDEC", "EDEL",
+         "EDUC", "EE", "ENGL", "ENSP", "ES", "FILM", "FR", "GEOG", "GEOL", "GEP",
+         "GER", "GERN", "HD", "HIST", "HLTH", "HUM", "JWST", "KIN", "LIBS",
+         "LING", "MATH", "MUS", "NAMS", "NURS", "PHIL", "PHYS", "POLS", "PSY", "SCI",
+         "SOCI", "SPAN", "THAR", "UNIV", "WGS"]*/
+    var subject = [String]()
+    var courseNumber = ["None", "Less Than", "Exactly", "Greater Than"]
+    
+    var courseAttribute = ["None", "(A1) Written and Oral Analysis", "(A2) Fundamentals of Comm",
+                           "(A3) Critical Thinking", "(B1) Physical Sciences",
+                           "(B2) Biological Sciences", "(B3) Specific Emphasis",
+                           "(B4) Mathematical Concepts", "(C1) Arts, Thrt, Dnc, Mus, Flm",
+                           "(C2) Lit, Philosophies, Values", "(C3) Comp Persp/Foreign Language",
+                           "(D1) Individual and Society", "(D2) World History & Civ",
+                           "(D3) United States History", "(D4) U.S. Const & CA Gov't",
+                           "(D5) ContempInterntl Persp", "(E) Integrated Person",
+                           "(GE) Ethnic Studies", "(GE) Lab Course"]
     
     var picker = 0
     
     override func viewDidLoad() {
+        var set: Set = Set<String>()
+        for c in CourseList.courses!.courses {
+            set.insert(c.subject)
+        }
+        subject = set.sorted()
+        subject.insert("None", at: 0)
         super.viewDidLoad()
-
-        subjectDropDown.isHidden = true
-        courseNumberDropDown.isHidden = true
-        
-        subjectDropDown.backgroundColor = UniversityDarkBlue
-        courseNumberDropDown.backgroundColor = UniversityDarkBlue
-  
     }
 
     override func didReceiveMemoryWarning() {
@@ -156,15 +171,7 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if picker == 2 {
             titleData = courseAttribute[row]
         }
-        /*
-        if pickerView == courseNumberDropDown {
-            titleData = courseNumber[row]
-            subjectDropDown.isHidden = false
-        }
-        else {
-            courseNumberDropDown.isHidden = true
-        }
-        */
+      
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.black])
  
         
@@ -177,6 +184,31 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "SearchClassSegue" else { return }
         let destinationVC : AddClassViewController = segue.destination as! AddClassViewController
+        
+        // example of filter var newcourses: [Course] = courses.filter {$0.catalog > somenumber }
+        // var courseNum : Int = Int(courseNumberText)
+        
+        var newcourses = CourseList.courses!.courses.filter {$0.subject == subjectText.text}
+        if courseNumberText.text == "Less Than" {
+            newcourses = newcourses.filter {$0.catalog < number.text!}
+        } else if courseNumberText.text == "Exactly" {
+            newcourses = newcourses.filter {$0.catalog == number.text!}
+        } else if courseNumberText.text == "Greater Than" {
+            newcourses = newcourses.filter {$0.catalog > number.text!}
+        }
+        else {
+            newcourses = CourseList.courses!.courses.filter {$0.subject == subjectText.text}
+        }
+
+        // newcourses.sort()
+        destinationVC.filteredCourses = newcourses
+        
+        /*
+        for i in 0...newcourses.count-1 {
+                print(newcourses[i].ge_designation)
+        }
+         */
+ 
         destinationVC.terms = self.terms
         destinationVC.termIndex = self.termIndex
         return

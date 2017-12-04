@@ -22,7 +22,8 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     var terms = [Term]()
     
-    var years = [Int]()
+    var years = [String]()
+    var numberOfUnits = Float()
     
     var clickedCell = IndexPath()
     
@@ -47,21 +48,19 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         var year = calendar.component(.year, from: date)
         
         if years.count == 0 {
+            years.append("None")
             for _ in 0...5 {
-                years.append(year)
+                years.append(String(year))
                 year += 1
             }
         }
         
         self.termTable.reloadData()
-     
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        // if "go back" data reappears
-        // terms.removeAll()
+    
         self.termTable.reloadData()
     }
     
@@ -77,7 +76,6 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
             AddTermDestinationVC.terms = self.terms
             return
         }
-        
         
         let destinationVC : MySchedulesViewController = segue.destination as! MySchedulesViewController
         saveSchedule(destinationVC)
@@ -105,7 +103,16 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let schedule = Schedule(context: context)
-        schedule.scheduleDate = "10/7/24"
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myString = formatter.string(from: Date())
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = "dd-MMM-yyyy"
+        let myStringafd = formatter.string(from: yourDate!)
+        
+        print(myStringafd)
+        schedule.scheduleDate = myStringafd
         schedule.scheduleName = scheduleName.text
        
         if(terms.count != 0) {
@@ -138,11 +145,11 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
  
 
     @IBAction func editScheduleName(_ sender: Any) {
-        let alertController = UIAlertController(title: "Change Schedule Name", message: "", preferredStyle: .alert)
         
+        let alertController = UIAlertController(title: "Change Schedule Name", message: "", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alertController.textFields![0] as? UITextField {
-                
+            
                 self.scheduleName.text = field.text
             
             } else {
@@ -158,11 +165,12 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
        
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        
         self.present(alertController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return terms.count // your number of cell here
+        return terms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -174,7 +182,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
             if let theCell = cell as? TermTableViewCell {
                 
                 theCell.term.text = terms[indexPath.row].termName
-                theCell.numberOfUnits.text = String(terms[indexPath.row].termUnits)
+                theCell.numberOfUnits.text = terms[indexPath.row].termUnits
                 
                 theCell.term.textColor = UIColor.white
                 theCell.numberOfUnits.textColor = UIColor.white
@@ -190,8 +198,6 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.clickedCell = indexPath
-        print(clickedCell)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -216,7 +222,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let year = years[row]
-        return String(year)
+        return year
     }
 
     func inputTermName(_ action: Int)
@@ -246,8 +252,12 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     func updateTermName()
     {
-        termName = termChoice + " " + yearString
-        print(termName)
+        if yearString == "None" {
+            termName = termChoice
+        } else {
+            termName = termChoice + " " + yearString
+        }
+
 
         // Do we want to save to core data or save to schedule?
         
@@ -257,7 +267,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         let term = Term(context: context)
         
         term.termName = self.termName
-        term.termUnits = 0
+        term.termUnits = "0.0"
         
         terms.append(term)
         print("Count of terms: \(terms.count)")

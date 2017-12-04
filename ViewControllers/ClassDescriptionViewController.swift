@@ -12,6 +12,17 @@ import CoreData
 class ClassDescriptionViewController: UIViewController {
 
     //@IBOutlet weak var saveClass: UIBarButtonItem!
+    let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+    
+    var className = Course()
+    
+    @IBOutlet weak var courseNameLabel: UILabel!
+    @IBOutlet weak var courseUnitsLabel: UILabel!
+    @IBOutlet weak var courseGELabel: UILabel!
+    @IBOutlet weak var coursePrerequisiteLabel: UILabel!
+    @IBOutlet weak var courseDescriptionLabel: UILabel!
+    
+    
     
     @IBAction func didClickSave(_ sender: Any) {
         if let navController = self.navigationController {
@@ -22,7 +33,6 @@ class ClassDescriptionViewController: UIViewController {
             prevController.termIndex = self.termIndex
             navController.popToViewController(prevController, animated: true)
         }
-        
     }
     
     var clickedCell = IndexPath()
@@ -33,10 +43,35 @@ class ClassDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = lightGray
+ 
+        print("Subject to be printed: \(self.className.subject)")
+       self.courseNameLabel.text = self.className.subject + " " + self.className.catalog + " " + self.className.course_title
+       self.courseUnitsLabel.text = self.className.units
+        if self.className.ge_designation?.count == 0 {
+            self.courseGELabel.text = "No GE Attribute"
+        } else {
+             self.courseGELabel.text = self.className.ge_designation
+        }
+        self.courseDescriptionLabel.text = "N/A"
+        
+        print(self.className.catalog)
+    
+        
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+ //       print("Inside View Did Appear")
+        self.courseNameLabel.text = self.className.subject + " " + self.className.catalog + " " + self.className.course_title
+        self.courseUnitsLabel.text = self.className.units
+        
+        
+        
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,19 +97,21 @@ class ClassDescriptionViewController: UIViewController {
         let chosenClass = Class(context: context)
         terms[termIndex].addToClasses(chosenClass)
         
-        chosenClass.class_Name = "CS 210";
-        chosenClass.class_Units = 1;
+        chosenClass.class_Name = courseNameLabel.text
+        chosenClass.class_Units = courseUnitsLabel.text
         
         
         print("terms count: \(terms.count)")
         
         // terms[termIndex].addToClasses(chosenClass)
-      
-        
+  
        //  vc.classes.append(chosenClass)
         // vc.classTable.reloadData()
     }
     
+   // func updateLabels() {
+   //     self.courseNameLabel.text = self.className.course_title
+   // }
     /*
     // MARK: - Navigation
 

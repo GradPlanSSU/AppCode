@@ -71,24 +71,8 @@ class MainMenuViewController: UIViewController {
         CreateScheduleButton.layer.borderWidth = 0
         CreateScheduleButton.layer.cornerRadius = 9
         
-        if let url = URL(string: "http://blue.cs.sonoma.edu:8000/courses/catalog?token=" + DLToken.token){
-            print("In the url area")
-            do {
-                let contents = try String(contentsOf: url)
-                if let data = contents.data(using: .utf8) {
-                    CourseList.courses = try JSONDecoder().decode(Courses.self, from: data)
-                    print(CourseList.courses.courses)
-                } else {
-                    print("error fetching contents")
-                }
-                
-            } catch {
-                print("There was an Airor")
-            }
-        } else {
-            print("Error Assigning URL")
-        }
-        
+        var download = Download(withURLString: "http://blue.cs.sonoma.edu:8000/courses/catalog").useParams().useToken()
+        CourseList.courses = download.download_request()
        // CreateScheduleButton.alpha = 0.70
  
         

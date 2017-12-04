@@ -11,10 +11,6 @@
 		092AFB151FB30ED1001ED884 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AFB141FB30ED1001ED884 /* ScheduleTableViewCell.swift */; };
 		092AFB1A1FB3FCE6001ED884 /* ssuLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 092AFB191FB3FCE6001ED884 /* ssuLogo.jpg */; };
 		094063581FBBE66F00B7E705 /* ARRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094063571FBBE66F00B7E705 /* ARRViewController.swift */; };
-		094EC7D91FCE3A7A009A5F70 /* Class+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EC7D51FCE3A7A009A5F70 /* Class+CoreDataClass.swift */; };
-		094EC7DA1FCE3A7A009A5F70 /* Class+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EC7D61FCE3A7A009A5F70 /* Class+CoreDataProperties.swift */; };
-		094EC7DB1FCE3A7A009A5F70 /* Term+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EC7D71FCE3A7A009A5F70 /* Term+CoreDataClass.swift */; };
-		094EC7DC1FCE3A7A009A5F70 /* Term+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EC7D81FCE3A7A009A5F70 /* Term+CoreDataProperties.swift */; };
 		094EC7DE1FD2983E009A5F70 /* ClassInsideTermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EC7DD1FD2983E009A5F70 /* ClassInsideTermCell.swift */; };
 		09DB7C7A1FB15FC900C609D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB7C791FB15FC900C609D7 /* AppDelegate.swift */; };
 		09DB7C7C1FB15FC900C609D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB7C7B1FB15FC900C609D7 /* LoginViewController.swift */; };
@@ -39,7 +35,11 @@
 		3F49D6431FCDE82E001D404A /* Schedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D63D1FCDE82E001D404A /* Schedule+CoreDataClass.swift */; };
 		3F49D6441FCDE82E001D404A /* Schedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D63E1FCDE82E001D404A /* Schedule+CoreDataProperties.swift */; };
 		3F49D64A1FCDED31001D404A /* AddTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D6491FCDED31001D404A /* AddTermViewController.swift */; };
+		3F5B3CF31FD5C9FA00F7B71F /* Term+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */; };
+		3F5B3CF41FD5C9FA00F7B71F /* Term+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */; };
 		3F9848A71FD23DFD0095C7B4 /* ClassDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */; };
+		3FCD2BD21FD512AB0032766F /* Class+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */; };
+		3FCD2BD31FD512AB0032766F /* Class+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */; };
 		3FDC0F691FD39B60007334D2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC0F681FD39B60007334D2 /* Student.swift */; };
 		3FDC0F6B1FD39CC9007334D2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC0F6A1FD39CC9007334D2 /* Course.swift */; };
 		3FDC0F6D1FD3A33E007334D2 /* Courses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC0F6C1FD3A33E007334D2 /* Courses.swift */; };
@@ -72,10 +72,6 @@
 		092AFB141FB30ED1001ED884 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		092AFB191FB3FCE6001ED884 /* ssuLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ssuLogo.jpg; sourceTree = "<group>"; };
 		094063571FBBE66F00B7E705 /* ARRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARRViewController.swift; sourceTree = "<group>"; };
-		094EC7D51FCE3A7A009A5F70 /* Class+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataClass.swift"; sourceTree = "<group>"; };
-		094EC7D61FCE3A7A009A5F70 /* Class+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		094EC7D71FCE3A7A009A5F70 /* Term+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataClass.swift"; sourceTree = "<group>"; };
-		094EC7D81FCE3A7A009A5F70 /* Term+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		094EC7DD1FD2983E009A5F70 /* ClassInsideTermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInsideTermCell.swift; sourceTree = "<group>"; };
 		09DB7C761FB15FC900C609D7 /* SSUSchedulePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSUSchedulePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09DB7C791FB15FC900C609D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +104,11 @@
 		3F49D63D1FCDE82E001D404A /* Schedule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F49D63E1FCDE82E001D404A /* Schedule+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3F49D6491FCDED31001D404A /* AddTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTermViewController.swift; sourceTree = "<group>"; };
+		3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDescriptionViewController.swift; sourceTree = "<group>"; };
+		3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3FDC0F681FD39B60007334D2 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		3FDC0F6A1FD39CC9007334D2 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		3FDC0F6C1FD3A33E007334D2 /* Courses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Courses.swift; sourceTree = "<group>"; };
@@ -287,13 +287,13 @@
 		3F86789E1FCF7A6400B95384 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				094EC7D51FCE3A7A009A5F70 /* Class+CoreDataClass.swift */,
-				094EC7D61FCE3A7A009A5F70 /* Class+CoreDataProperties.swift */,
+				3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */,
+				3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */,
+				3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */,
+				3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */,
 				09EEFC521FBBF0B200EF6F04 /* Extensions.swift */,
 				3F49D63D1FCDE82E001D404A /* Schedule+CoreDataClass.swift */,
 				3F49D63E1FCDE82E001D404A /* Schedule+CoreDataProperties.swift */,
-				094EC7D71FCE3A7A009A5F70 /* Term+CoreDataClass.swift */,
-				094EC7D81FCE3A7A009A5F70 /* Term+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -611,8 +611,8 @@
 				09EEFC511FBBEFFF00EF6F04 /* ExampleData.swift in Sources */,
 				3F1FABFB1FD373A600666682 /* Download.swift in Sources */,
 				3F3442EE1FB29DD900DC077D /* MySchedulesViewController.swift in Sources */,
+				3FCD2BD21FD512AB0032766F /* Class+CoreDataClass.swift in Sources */,
 				094EC7DE1FD2983E009A5F70 /* ClassInsideTermCell.swift in Sources */,
-				094EC7DC1FCE3A7A009A5F70 /* Term+CoreDataProperties.swift in Sources */,
 				09DB7C7C1FB15FC900C609D7 /* LoginViewController.swift in Sources */,
 				3F0602EA1FCA688D00E5BB96 /* searchClassController.swift in Sources */,
 				3F3442EC1FB29DB100DC077D /* CreateScheduleViewController.swift in Sources */,
@@ -622,18 +622,18 @@
 				3F49D6431FCDE82E001D404A /* Schedule+CoreDataClass.swift in Sources */,
 				3F2B78051FD22A67006DD663 /* AddClassViewController.swift in Sources */,
 				3F49D6441FCDE82E001D404A /* Schedule+CoreDataProperties.swift in Sources */,
-				094EC7DA1FCE3A7A009A5F70 /* Class+CoreDataProperties.swift in Sources */,
+				3F5B3CF31FD5C9FA00F7B71F /* Term+CoreDataClass.swift in Sources */,
 				094063581FBBE66F00B7E705 /* ARRViewController.swift in Sources */,
 				092AFB151FB30ED1001ED884 /* ScheduleTableViewCell.swift in Sources */,
 				3FE957BB1FB3BA5C0004479E /* ClassTableViewCell.swift in Sources */,
 				3F2B78071FD22F05006DD663 /* SearchResultsTableViewCell.swift in Sources */,
 				3F9848A71FD23DFD0095C7B4 /* ClassDescriptionViewController.swift in Sources */,
-				094EC7DB1FCE3A7A009A5F70 /* Term+CoreDataClass.swift in Sources */,
 				3F0602E81FCA46F600E5BB96 /* TermTableViewCell.swift in Sources */,
+				3F5B3CF41FD5C9FA00F7B71F /* Term+CoreDataProperties.swift in Sources */,
 				09DB7C821FB15FC900C609D7 /* SSUSchedulePlanner.xcdatamodeld in Sources */,
 				3FDC0F691FD39B60007334D2 /* Student.swift in Sources */,
-				094EC7D91FCE3A7A009A5F70 /* Class+CoreDataClass.swift in Sources */,
 				09EEFC531FBBF0B200EF6F04 /* Extensions.swift in Sources */,
+				3FCD2BD31FD512AB0032766F /* Class+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

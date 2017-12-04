@@ -18,12 +18,6 @@ class MySchedulesViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var schedules = [Schedule]()
-
-    /*
-    let schedule = ["Schedule 1", "Potential Schedule", "Failed all my Classes Schedule"]
-    let dates = ["11/5/17", "10/31/17", "10/29/17"]
-    let units = ["12","15","11"]
-     */
  
     var noDataLabel = UILabel()
     
@@ -44,11 +38,9 @@ class MySchedulesViewController: UITableViewController {
             
             theCell.scheduleDate.text = schedules[indexPath.row].scheduleDate
             theCell.scheduleName.text = schedules[indexPath.row].scheduleName
-            //theCell.scheduleUnits.text = units[indexPath.row]
             
             theCell.scheduleDate.textColor = UIColor.white
             theCell.scheduleName.textColor = UIColor.white
-            theCell.scheduleUnits.textColor = UIColor.white
 
         }
 

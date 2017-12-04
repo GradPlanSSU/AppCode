@@ -13,6 +13,7 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // University Light Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
+    let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
     
     var classes = [Class]()
     
@@ -27,9 +28,21 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
             let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
             let prevController: CreateScheduleViewController = viewControllers[viewControllers.count - 2] as! CreateScheduleViewController
             prevController.terms = self.terms
+            
+            var units : Float = 0.00
+            
+            if(classes.count > 0) {
+                for i in 0...classes.count-1 {
+                    units = units + (classes[i].class_Units! as NSString).floatValue
+                }
+            }
+            prevController.numberOfUnits = units
+            prevController.terms[termIndex].termUnits = String(units)
+            
             navController.popToViewController(prevController, animated: true)
         }
     }
+    
     @IBOutlet weak var classTable: UITableView!
     
     @IBAction func clickedAddClass(_ sender: Any) {
@@ -44,15 +57,13 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        classTable.backgroundColor = lightGray
         print("Loading AddTermViewController")
         print("Term Index: \(termIndex)")
         classes = Array(terms[termIndex].classes!) as! [Class]
         
         classTable.delegate = self
         classTable.dataSource = self
-        
-        print("Number Of Terms: \(terms.count)")
-        print("Number Of Classes: \(classes.count)")
         classTable.reloadData()
    
         
@@ -86,7 +97,7 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
                 print("Add Cell")
                 
                 theCell.className.text = classes[indexPath.row].class_Name
-                theCell.classUnits.text = String(classes[indexPath.row].class_Units)
+                theCell.classUnits.text = classes[indexPath.row].class_Units
                 
                 theCell.className.textColor = UIColor.white
                 theCell.classUnits.textColor = UIColor.white
@@ -108,11 +119,12 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
             let searchClassDestinationVC : searchClassController = segue.destination as! searchClassController
             searchClassDestinationVC.terms = self.terms
             searchClassDestinationVC.termIndex = self.termIndex
-            
+        
             return
         }
         
         let destinationVC : CreateScheduleViewController = segue.destination as! CreateScheduleViewController
+        
         destinationVC.terms = self.terms
 
     }
