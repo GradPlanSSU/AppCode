@@ -57,7 +57,7 @@ class NetRequestHandler: NSObject {
             return nil
         }
     }
-    func post_request<T: Codable>() -> T?{
+    func post_request_callback(callback: @escaping (Data?) -> Void){
         if let url = URL(string: urlString){
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -67,47 +67,23 @@ class NetRequestHandler: NSObject {
             }
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 //networking error check
-                guard let data = data, error == nil else {
-                    print("error=\(error!)")
-                    return nil
+            
+                if let data = data {
+                    do {
+                        callback(data)
+                    }
                 }
                 //http error check
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                else if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response!)")
+                } else {
+                    print("Error: \(error!)")
                 }
-                return try JSONDecoder().decode(T.self, from: data)
+                
             }
             task.resume()
         } else {
-            return nil
-        }
-    }
-    func post_request_callback<T: Codable>(callback: @escaping (Void) -> Void) -> T?{
-        if let url = URL(string: urlString){
-            var request = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
-            if postString != nil {
-                request.httpBody = postString?.data(using: .utf8)
-            }
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                //networking error check
-                guard let data = data, error == nil else {
-                    print("error=\(error!)")
-                    return nil
-                }
-                //http error check
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    print("response = \(response!)")
-                }
-                return try JSONDecoder().decode(T.self, from: data)
-                callback()
-            }
-            task.resume()
-        } else {
-            return nil
         }
     }
 }

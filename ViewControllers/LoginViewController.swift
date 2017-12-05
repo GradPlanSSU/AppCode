@@ -38,15 +38,22 @@ class LoginViewController: UIViewController {
             
         } else {
             let login = NetRequestHandler(withURLString: "http://blue.cs.sonoma.edu:8000/authenticate/login").usePostString(postString: "username=" + username! + "&password=" + password!)
-            let student: Student? = login.post_request_callback {
+            login.post_request_callback() { data in
+                do {
+                    let student: Student? = try JSONDecoder().decode(Student.self, from: data!)
+                    if student != nil {
+                        AuthToken.token = student!.token
+                        print(AuthToken.token)
+                    }
                     OperationQueue.main.addOperation {
                         self.performSegue(withIdentifier: "LoginToMainMenu", sender: self)
                     }
+                } catch {
+                    
                 }
-            if student != nil {
-                AuthToken.token = student!.token
-                print(AuthToken.token)
             }
+            
+            
         }
         
 
