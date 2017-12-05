@@ -37,34 +37,16 @@ class LoginViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            print("username length: \(username?.characters.count)")
-            let url = URL(string: "http://blue.cs.sonoma.edu:8000/authenticate/login")!
-            var request = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
-            let postString = "username=" + username! + "&password=" + password!
-            print(postString)
-            request.httpBody = postString.data(using: .utf8)
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                    print("error=\(error!)")
-                    return
+            let login = NetRequestHandler(withURLString: "http://blue.cs.sonoma.edu:8000/authenticate/login").usePostString(postString: "username=" + username! + "&password=" + password!)
+            let student: Student? = login.post_request_callback {
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "LoginToMainMenu", sender: self)
+                    }
                 }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    print("response = \(response!)")
-                }
-              
-                var student = try! JSONDecoder().decode(Student.self, from: data)
-                DLToken.token = student.token
-                print(DLToken.token)
-                OperationQueue.main.addOperation {
-                    self.performSegue(withIdentifier: "LoginToMainMenu", sender: self)
-                }
+            if student != nil {
+                AuthToken.token = student!.token
+                print(AuthToken.token)
             }
-            task.resume()
-            
         }
         
 

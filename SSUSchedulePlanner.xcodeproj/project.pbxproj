@@ -27,7 +27,7 @@
 		3F0602E81FCA46F600E5BB96 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0602E71FCA46F600E5BB96 /* TermTableViewCell.swift */; };
 		3F0602EA1FCA688D00E5BB96 /* searchClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0602E91FCA688D00E5BB96 /* searchClassController.swift */; };
 		3F06D4011FB93E7C00E19964 /* ssuLibrary.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F06D4001FB93E7C00E19964 /* ssuLibrary.jpg */; };
-		3F1FABFB1FD373A600666682 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1FABFA1FD373A600666682 /* Download.swift */; };
+		3F1FABFB1FD373A600666682 /* NetRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1FABFA1FD373A600666682 /* NetRequestHandler.swift */; };
 		3F2B78051FD22A67006DD663 /* AddClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B78041FD22A67006DD663 /* AddClassViewController.swift */; };
 		3F2B78071FD22F05006DD663 /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2B78061FD22F05006DD663 /* SearchResultsTableViewCell.swift */; };
 		3F3442EC1FB29DB100DC077D /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3442EB1FB29DB100DC077D /* CreateScheduleViewController.swift */; };
@@ -96,7 +96,7 @@
 		3F0602E71FCA46F600E5BB96 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
 		3F0602E91FCA688D00E5BB96 /* searchClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchClassController.swift; sourceTree = "<group>"; };
 		3F06D4001FB93E7C00E19964 /* ssuLibrary.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ssuLibrary.jpg; sourceTree = "<group>"; };
-		3F1FABFA1FD373A600666682 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		3F1FABFA1FD373A600666682 /* NetRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetRequestHandler.swift; sourceTree = "<group>"; };
 		3F2B78041FD22A67006DD663 /* AddClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassViewController.swift; sourceTree = "<group>"; };
 		3F2B78061FD22F05006DD663 /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
 		3F3442EB1FB29DB100DC077D /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		09EEFC4F1FBBEFF200EF6F04 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3F1FABFA1FD373A600666682 /* Download.swift */,
+				3F1FABFA1FD373A600666682 /* NetRequestHandler.swift */,
 				09EEFC501FBBEFFF00EF6F04 /* ExampleData.swift */,
 				3FDC0F681FD39B60007334D2 /* Student.swift */,
 				3FDC0F6A1FD39CC9007334D2 /* Course.swift */,
@@ -609,7 +609,7 @@
 				09EEFC4A1FBBEE6B00EF6F04 /* CollapsibleTableViewHeader.swift in Sources */,
 				09EEFC4C1FBBEEE500EF6F04 /* CollapsibleTableViewCell.swift in Sources */,
 				09EEFC511FBBEFFF00EF6F04 /* ExampleData.swift in Sources */,
-				3F1FABFB1FD373A600666682 /* Download.swift in Sources */,
+				3F1FABFB1FD373A600666682 /* NetRequestHandler.swift in Sources */,
 				3F3442EE1FB29DD900DC077D /* MySchedulesViewController.swift in Sources */,
 				3FCD2BD21FD512AB0032766F /* Class+CoreDataClass.swift in Sources */,
 				094EC7DE1FD2983E009A5F70 /* ClassInsideTermCell.swift in Sources */,

@@ -57,7 +57,7 @@ class MainMenuViewController: UIViewController {
         CreateScheduleButton.layer.borderWidth = 0
         CreateScheduleButton.layer.cornerRadius = 9
         
-        var download = Download(withURLString: "http://blue.cs.sonoma.edu:8000/courses/catalog").useParams().useToken()
+        let download = NetRequestHandler(withURLString: "http://blue.cs.sonoma.edu:8000/courses/catalog").useParams().useToken()
         CourseList.courses = download.download_request()
        // CreateScheduleButton.alpha = 0.70
  
