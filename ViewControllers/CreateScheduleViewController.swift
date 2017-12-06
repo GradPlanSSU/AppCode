@@ -76,14 +76,13 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
             AddTermDestinationVC.terms = self.terms
             return
         }
-        
         let destinationVC : MySchedulesViewController = segue.destination as! MySchedulesViewController
         saveSchedule(destinationVC)
         
     }
 
     @IBAction func addTerm(_ sender: Any) {
-      
+        
         print("Clicked Add Term Button")
         
         let alertController = UIAlertController(title: "Choose Term", message: "", preferredStyle: .alert)
@@ -148,7 +147,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         
         let alertController = UIAlertController(title: "Change Schedule Name", message: "", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            if let field = alertController.textFields![0] as? UITextField {
+            if let field = alertController.textFields![0] as UITextField? {
             
                 self.scheduleName.text = field.text
             

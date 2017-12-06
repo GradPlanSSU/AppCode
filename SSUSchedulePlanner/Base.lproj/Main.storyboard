@@ -621,10 +621,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGI-md-wQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2372.463768115942" y="-233.1521739130435"/>
+            <point key="canvasLocation" x="2248" y="-149"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KCC-ob-8da">

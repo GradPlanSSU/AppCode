@@ -37,6 +37,7 @@
 		3F49D64A1FCDED31001D404A /* AddTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49D6491FCDED31001D404A /* AddTermViewController.swift */; };
 		3F5B3CF31FD5C9FA00F7B71F /* Term+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */; };
 		3F5B3CF41FD5C9FA00F7B71F /* Term+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */; };
+		3F5CC1B71FD8ACD000B4EE79 /* Prerequisites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */; };
 		3F9848A71FD23DFD0095C7B4 /* ClassDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */; };
 		3FCD2BD21FD512AB0032766F /* Class+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */; };
 		3FCD2BD31FD512AB0032766F /* Class+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */; };
@@ -106,6 +107,7 @@
 		3F49D6491FCDED31001D404A /* AddTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTermViewController.swift; sourceTree = "<group>"; };
 		3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prerequisites.swift; sourceTree = "<group>"; };
 		3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDescriptionViewController.swift; sourceTree = "<group>"; };
 		3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				3FDC0F681FD39B60007334D2 /* Student.swift */,
 				3FDC0F6A1FD39CC9007334D2 /* Course.swift */,
 				3FDC0F6C1FD3A33E007334D2 /* Courses.swift */,
+				3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				3F49D64A1FCDED31001D404A /* AddTermViewController.swift in Sources */,
 				092AFB131FB18306001ED884 /* MainMenuViewController.swift in Sources */,
 				3FDC0F6D1FD3A33E007334D2 /* Courses.swift in Sources */,
+				3F5CC1B71FD8ACD000B4EE79 /* Prerequisites.swift in Sources */,
 				09EEFC4A1FBBEE6B00EF6F04 /* CollapsibleTableViewHeader.swift in Sources */,
 				09EEFC4C1FBBEEE500EF6F04 /* CollapsibleTableViewCell.swift in Sources */,
 				09EEFC511FBBEFFF00EF6F04 /* ExampleData.swift in Sources */,

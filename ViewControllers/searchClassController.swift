@@ -191,10 +191,7 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
         } else if courseNumberText.text == "Greater Than" {
             newcourses = newcourses.filter {$0.catalog > number.text!}
         }
-        else {
-            newcourses = CourseList.courses!.courses.filter {$0.subject == subjectText.text}
-        }
-
+        
         // newcourses.sort()
         destinationVC.filteredCourses = newcourses
         

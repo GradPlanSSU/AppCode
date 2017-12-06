@@ -55,7 +55,11 @@ class MySchedulesViewController: UITableViewController {
     
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
+        /*var vcontrollers = self.navigationController!.viewControllers
+        if vcontrollers[vcontrollers.count - 2].isKind(of: CreateScheduleViewController.self){
+            vcontrollers.remove(at: vcontrollers.count - 2)
+            self.navigationController?.setViewControllers(vcontrollers, animated: false)
+        }*/
         let fetchRequest: NSFetchRequest<Schedule> = Schedule.fetchRequest()
         do
         {
@@ -72,7 +76,12 @@ class MySchedulesViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
+        if let navController = self.navigationController {
+            let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
+            if viewControllers[viewControllers.count - 2].isKind(of: CreateScheduleViewController.self) {
+                navController.viewControllers.remove(at: viewControllers.count - 2)
+            }
+        }
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
