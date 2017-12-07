@@ -94,11 +94,13 @@ class ClassDescriptionViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let chosenClass = Class(context: context)
-        terms[termIndex].addToClasses(chosenClass)
         
+        let chosenClass = Class(context: context)
         chosenClass.class_Name = courseNameLabel.text
         chosenClass.class_Units = courseUnitsLabel.text
+        chosenClass.catalog = self.className.catalog
+        chosenClass.subject = self.className.subject
+        terms[termIndex].addToClasses(chosenClass)
         
         
         print("terms count: \(terms.count)")

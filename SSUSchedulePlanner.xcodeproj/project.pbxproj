@@ -38,6 +38,7 @@
 		3F5B3CF31FD5C9FA00F7B71F /* Term+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */; };
 		3F5B3CF41FD5C9FA00F7B71F /* Term+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */; };
 		3F5CC1B71FD8ACD000B4EE79 /* Prerequisites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */; };
+		3F5CC1B91FD8D12600B4EE79 /* EnrollmentRequirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CC1B81FD8D12600B4EE79 /* EnrollmentRequirements.swift */; };
 		3F9848A71FD23DFD0095C7B4 /* ClassDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */; };
 		3FCD2BD21FD512AB0032766F /* Class+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */; };
 		3FCD2BD31FD512AB0032766F /* Class+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */; };
@@ -108,6 +109,7 @@
 		3F5B3CF11FD5C9FA00F7B71F /* Term+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F5B3CF21FD5C9FA00F7B71F /* Term+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prerequisites.swift; sourceTree = "<group>"; };
+		3F5CC1B81FD8D12600B4EE79 /* EnrollmentRequirements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentRequirements.swift; sourceTree = "<group>"; };
 		3F9848A61FD23DFD0095C7B4 /* ClassDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDescriptionViewController.swift; sourceTree = "<group>"; };
 		3FCD2BD01FD512AB0032766F /* Class+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3FCD2BD11FD512AB0032766F /* Class+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				3FDC0F6A1FD39CC9007334D2 /* Course.swift */,
 				3FDC0F6C1FD3A33E007334D2 /* Courses.swift */,
 				3F5CC1B61FD8ACD000B4EE79 /* Prerequisites.swift */,
+				3F5CC1B81FD8D12600B4EE79 /* EnrollmentRequirements.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				3F49D6441FCDE82E001D404A /* Schedule+CoreDataProperties.swift in Sources */,
 				3F5B3CF31FD5C9FA00F7B71F /* Term+CoreDataClass.swift in Sources */,
 				094063581FBBE66F00B7E705 /* ARRViewController.swift in Sources */,
+				3F5CC1B91FD8D12600B4EE79 /* EnrollmentRequirements.swift in Sources */,
 				092AFB151FB30ED1001ED884 /* ScheduleTableViewCell.swift in Sources */,
 				3FE957BB1FB3BA5C0004479E /* ClassTableViewCell.swift in Sources */,
 				3F2B78071FD22F05006DD663 /* SearchResultsTableViewCell.swift in Sources */,

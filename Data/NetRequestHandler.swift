@@ -46,8 +46,9 @@ class NetRequestHandler: NSObject {
                     return nil
                 }
 
-            } catch {
+            } catch let jsonErr{
                 // contents could not be loaded
+                print(jsonErr)
                 print("Could not load contents of URL")
                 return nil
             }

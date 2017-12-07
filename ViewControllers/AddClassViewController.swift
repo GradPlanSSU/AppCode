@@ -34,7 +34,7 @@ class AddClassViewController: UITableViewController {
         
         if self.filteredCourses.count > 0 {
             for i in 0...self.filteredCourses.count - 1 {
-                var course = Class(context:context)
+                let course = Class(context:context)
                 course.class_Name = filteredCourses[i].course_title
                 course.catalog = filteredCourses[i].catalog
                 course.subject = filteredCourses[i].subject

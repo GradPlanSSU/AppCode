@@ -23,7 +23,7 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     var terms = [Term]()
     var termIndex = Int()
-    
+    var prevClasses = [Class]()
 
     var subject = [String]()
     var courseNumber = ["None", "Less Than", "Exactly", "Greater Than"]
@@ -191,7 +191,34 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
         } else if courseNumberText.text == "Greater Than" {
             newcourses = newcourses.filter {$0.catalog > number.text!}
         }
-        
+        prevClasses.removeAll(keepingCapacity: false)
+        for term in terms {
+            if terms.index(of: term)! < termIndex {
+                let prevCourseTmp = Array(term.classes!) as! [Class]
+                for course in prevCourseTmp {
+                    print(course.catalog)
+                    prevClasses.append(course)
+                }
+            }
+        }
+        var classesTakenAsStrings: [String] = [String]()
+        for classTaken in prevClasses {
+            print(classTaken.catalog)
+            classesTakenAsStrings.append(classTaken.subject! + " " + classTaken.catalog!)
+        }
+        let netHandler = NetRequestHandler(withURLString: "http://blue.cs.sonoma.edu:8000/courses/prerequisite").useParams().useToken()
+        if let prereqs: Prerequisites? = netHandler.download_request() {
+            for (i, _) in newcourses.enumerated().reversed() {
+                let inspect = prereqs?.courses.index(where: {$0.course == newcourses[i].subject + " " + newcourses[i].catalog})
+                if inspect != nil {
+                    let testvar = prereqs?.courses[inspect!].prerequisites.flatMap{$0}
+                    let preReqSet = Set(testvar!)
+                    if !preReqSet.isSubset(of: Set(classesTakenAsStrings)) {
+                        newcourses.remove(at: i)
+                    }
+                }
+            }
+        }
         // newcourses.sort()
         destinationVC.filteredCourses = newcourses
         

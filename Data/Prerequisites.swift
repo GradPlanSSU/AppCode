@@ -7,16 +7,12 @@
 //
 
 import UIKit
-struct EnrollmentRequirement {
-    var course: String
-    var prerequisites: [String]?
-    var vari_prerequisites: [[String]]?
-    var corequisite: [String]?
-}
-class Prerequisites: NSObject {
-    var courses: [EnrollmentRequirement]
+
+class Prerequisites: NSObject, Codable{
+
     override init() {
-        courses = [EnrollmentRequirement]()
+        courses = [EnrollmentRequirements]()
         super.init()
     }
+    var courses: [EnrollmentRequirements]
 }
