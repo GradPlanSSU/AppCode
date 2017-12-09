@@ -12,17 +12,13 @@ import CoreData
 
 class MySchedulesViewController: UITableViewController {
 
-    // University Dark Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
 
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+  //  let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var schedules = [Schedule]()
- 
     var noDataLabel = UILabel()
-    
     var scheduleNameText = String()
-    
     var clickedCell = IndexPath()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,11 +51,7 @@ class MySchedulesViewController: UITableViewController {
     
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        /*var vcontrollers = self.navigationController!.viewControllers
-        if vcontrollers[vcontrollers.count - 2].isKind(of: CreateScheduleViewController.self){
-            vcontrollers.remove(at: vcontrollers.count - 2)
-            self.navigationController?.setViewControllers(vcontrollers, animated: false)
-        }*/
+
         let fetchRequest: NSFetchRequest<Schedule> = Schedule.fetchRequest()
         do
         {
@@ -99,6 +91,7 @@ class MySchedulesViewController: UITableViewController {
         }
         
         if schedules.count == 0 {
+            
             noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No Schedules Created"
             noDataLabel.textColor     = UIColor.black

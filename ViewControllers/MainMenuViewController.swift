@@ -15,6 +15,8 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var MySchedulesButton: UIButton!
     @IBOutlet weak var ARRButton: UIButton!
     
+    @IBOutlet weak var banner: UILabel!
+    
     // University Light Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
     
@@ -36,9 +38,13 @@ class MainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UniversityDarkBlue
+        self.view.backgroundColor = UIColor.white
         
-        ARRButton.backgroundColor = UIColor.white
+        banner.textColor = UIColor.white
+        banner.backgroundColor = UniversityDarkBlue
+        
+        ARRButton.backgroundColor = UniversityDarkBlue
+        ARRButton.setTitleColor(UIColor.white, for: .normal)
         ARRButton.layer.borderColor = UIColor.white.cgColor
         ARRButton.layer.borderWidth = 0
         ARRButton.layer.cornerRadius = 9
@@ -46,14 +52,16 @@ class MainMenuViewController: UIViewController {
         
         // ARRButton.setImage(#imageLiteral(resourceName: "ssuLogo.jpg"), for: .normal)
         
-        MySchedulesButton.backgroundColor = UIColor.white
+        MySchedulesButton.backgroundColor = UniversityDarkBlue
         MySchedulesButton.layer.borderColor = UIColor.white.cgColor
+        MySchedulesButton.setTitleColor(UIColor.white, for: .normal)
         MySchedulesButton.layer.borderWidth = 0
         MySchedulesButton.layer.cornerRadius = 9
        // MySchedulesButton.alpha = 0.70
         
-        CreateScheduleButton.backgroundColor = UIColor.white
+        CreateScheduleButton.backgroundColor = UniversityDarkBlue
         CreateScheduleButton.layer.borderColor = UIColor.white.cgColor
+        CreateScheduleButton.setTitleColor(UIColor.white, for: .normal)
         CreateScheduleButton.layer.borderWidth = 0
         CreateScheduleButton.layer.cornerRadius = 9
         

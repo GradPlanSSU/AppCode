@@ -14,7 +14,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
 
     // University Light Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
-     let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+     let lightGray = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
     
     var termChoice = String()
     var yearString = String()
@@ -36,7 +36,14 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        addTermButton.backgroundColor = UniversityDarkBlue
+        addTermButton.setTitleColor(UIColor.white, for: .normal)
+        addTermButton.layer.cornerRadius = 5
+        
         termTable.backgroundColor = lightGray
+        
+        termTable.layer.cornerRadius = 15
 
         editScheduleNameButton.setImage(#imageLiteral(resourceName: "edit"), for: .normal)
         
@@ -72,6 +79,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
             print("Going Into A Specific Term")
             let AddTermDestinationVC : AddTermViewController = segue.destination as! AddTermViewController
             clickedCell = self.termTable.indexPathForSelectedRow!
+            AddTermDestinationVC.title = self.terms[clickedCell.row].termName
             AddTermDestinationVC.termIndex = clickedCell.row
             AddTermDestinationVC.terms = self.terms
             return

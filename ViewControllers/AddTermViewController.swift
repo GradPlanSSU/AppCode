@@ -11,9 +11,14 @@ import CoreData
 
 class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    // currently does not get rid of classes when back is clicked
+    
     // University Light Blue
     let UniversityDarkBlue = UIColor(red: 20/255, green: 59/255, blue: 135/255, alpha: 1.0)
-    let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+    let lightGray = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+    
+    @IBOutlet weak var addClassButton: UIButton!
     
     var classes = [Class]()
     
@@ -57,6 +62,11 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        classTable.layer.cornerRadius = 5
+        addClassButton.backgroundColor = UniversityDarkBlue
+        addClassButton.setTitleColor(UIColor.white, for: .normal)
+        addClassButton.layer.cornerRadius = 7
+        
         classTable.backgroundColor = lightGray
         print("Loading AddTermViewController")
         print("Term Index: \(termIndex)")
@@ -124,6 +134,8 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         let destinationVC : CreateScheduleViewController = segue.destination as! CreateScheduleViewController
+
+        // remove all values inside terms array before going back?
         
         destinationVC.terms = self.terms
 

@@ -27,13 +27,9 @@ class LoginViewController: UIViewController {
         if (username?.characters.count)! < 4 || (password?.characters.count)! < 6 {
 
             print("Invalid Username and/or Password")
-            
-             let alertController = UIAlertController(title: "Invalid Username/Password", message: "", preferredStyle: .alert)
-            
+            let alertController = UIAlertController(title: "Invalid Username/Password", message: "", preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "Confirm", style: .default)
-            
             alertController.addAction(confirmAction)
-            
             self.present(alertController, animated: true, completion: nil)
             
         } else {
@@ -49,14 +45,11 @@ class LoginViewController: UIViewController {
                         self.performSegue(withIdentifier: "LoginToMainMenu", sender: self)
                     }
                 } catch {
-                    
+                
                 }
             }
             
-            
         }
-        
-
         // comment this out when you want login page to work
        // performSegue(withIdentifier: "LoginToMainMenu", sender: self)
     }
@@ -83,6 +76,12 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        usernameInput.text = ""
+        passwordInput.text = ""
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
