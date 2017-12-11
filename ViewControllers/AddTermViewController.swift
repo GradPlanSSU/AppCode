@@ -62,6 +62,7 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        classTable.alpha = 0.90
         classTable.layer.cornerRadius = 5
         addClassButton.backgroundColor = UniversityDarkBlue
         addClassButton.setTitleColor(UIColor.white, for: .normal)
@@ -119,6 +120,23 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
         return(cell)
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("Attempting to Delete")
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            print("Removing: \(classes[indexPath.row].class_Name)")
+            classes.remove(at: indexPath.row)
+            terms[termIndex].classes = NSSet(array: classes)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            print("Inserting")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Get the new view controller using segue.destinationViewController.
@@ -132,22 +150,7 @@ class AddTermViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             return
         }
-        
-        let destinationVC : CreateScheduleViewController = segue.destination as! CreateScheduleViewController
-
-        // remove all values inside terms array before going back?
-        
-        destinationVC.terms = self.terms
 
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }

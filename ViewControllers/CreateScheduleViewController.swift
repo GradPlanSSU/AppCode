@@ -49,6 +49,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         
         termTable.delegate = self
         termTable.dataSource = self
+        termTable.alpha = 0.90
         
         let date = Date()
         let calendar = Calendar.current
@@ -67,7 +68,6 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewDidAppear(_ animated: Bool) {
-    
         self.termTable.reloadData()
     }
     
@@ -156,7 +156,7 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         let alertController = UIAlertController(title: "Change Schedule Name", message: "", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alertController.textFields![0] as UITextField? {
-            
+    
                 self.scheduleName.text = field.text
             
             } else {
@@ -207,6 +207,21 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         self.clickedCell = indexPath
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("Attempting to Delete")
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            terms.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -279,7 +294,14 @@ class CreateScheduleViewController: UIViewController, UITableViewDelegate, UITab
         terms.append(term)
         print("Count of terms: \(terms.count)")
         
-        termTable.reloadData()
+        termTable.beginUpdates()
+        termTable.insertRows(at: [
+            NSIndexPath(row: terms.count-1, section: 0) as IndexPath
+            ], with: .left)
+        terms = terms.sorted { $0.termName! < $1.termName! }
+        termTable.endUpdates()
+        
+        // termTable.reloadData()
       
         
     }

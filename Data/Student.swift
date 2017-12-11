@@ -12,14 +12,14 @@ class Student: NSObject, Codable{
     override init(){
         fname = ""
         lname = ""
-        user_name = ""
-        user_icon_url = ""
+        mname = ""
+        student_id = ""
         token = ""
         super.init()
     }
     var fname: String
     var lname: String
-    var user_name: String
-    var user_icon_url: String?
+    var mname: String?
+    var student_id: String
     var token: String
 }

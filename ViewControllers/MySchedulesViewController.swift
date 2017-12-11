@@ -105,6 +105,8 @@ class MySchedulesViewController: UITableViewController {
         }
         
     }
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -133,6 +135,31 @@ class MySchedulesViewController: UITableViewController {
         print(clickedCell)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(schedules[indexPath.row])
+            
+            do
+            {
+                try context.save()
+                print("Deleted Schedule")
+            }
+            catch
+            {
+                // error
+            }
+            
+            self.schedules.remove(at: indexPath.row)
+            
+            // Step 3:
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     /*
     // MARK: - Navigation
 

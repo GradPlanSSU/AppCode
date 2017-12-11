@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import CollapsibleTableSectionViewController
 
 class MainMenuViewController: UIViewController {
@@ -32,6 +33,20 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func didTapLogoutButton(_ sender: UIBarButtonItem) {
         print("Clicked Logout Button")
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Token")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+        
         presentingViewController?.dismiss(animated: true, completion: nil )
     }
 

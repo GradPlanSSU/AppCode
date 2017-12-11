@@ -15,6 +15,7 @@ class ClassDescriptionViewController: UIViewController {
     let lightGray = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
     
     var className = Course()
+    var has_prerequisite = Bool()
     
     @IBOutlet weak var courseNameLabel: UILabel!
     @IBOutlet weak var courseUnitsLabel: UILabel!
@@ -25,14 +26,40 @@ class ClassDescriptionViewController: UIViewController {
     
     
     @IBAction func didClickSave(_ sender: Any) {
-        if let navController = self.navigationController {
+        if has_prerequisite == true {
+            
+        
+                let alertController = UIAlertController(title: "Missing Prerequisite", message: "You may have not met the prerequisites for this class. Add anyways?", preferredStyle: .alert)
+                let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                    if let navController = self.navigationController {
+                        let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
+                        let prevController: AddTermViewController = viewControllers[viewControllers.count - 4] as! AddTermViewController
+                        self.saveClass()
+                        prevController.terms = self.terms
+                        prevController.termIndex = self.termIndex
+                        navController.popToViewController(prevController, animated: true)
+                    }
+                }
+            
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+                alertController.addAction(confirmAction)
+                alertController.addAction(cancelAction)
+            
+                self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+            if let navController = self.navigationController {
             let viewControllers: [UIViewController] = navController.viewControllers as [UIViewController]
             let prevController: AddTermViewController = viewControllers[viewControllers.count - 4] as! AddTermViewController
             self.saveClass()
             prevController.terms = self.terms
             prevController.termIndex = self.termIndex
             navController.popToViewController(prevController, animated: true)
+            }
         }
+        
+        has_prerequisite = false
     }
     
     var clickedCell = IndexPath()
@@ -43,7 +70,7 @@ class ClassDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = lightGray
+       // self.view.backgroundColor = lightGray
  
         print("Subject to be printed: \(self.className.subject)")
        self.courseNameLabel.text = self.className.subject + " " + self.className.catalog + " " + self.className.course_title
@@ -66,10 +93,11 @@ class ClassDescriptionViewController: UIViewController {
  //       print("Inside View Did Appear")
         self.courseNameLabel.text = self.className.subject + " " + self.className.catalog + " " + self.className.course_title
         self.courseUnitsLabel.text = self.className.units
-        
-        
-        
-
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        has_prerequisite = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,16 +120,16 @@ class ClassDescriptionViewController: UIViewController {
 
     func saveClass() {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let chosenClass = Class(context: context)
-        chosenClass.class_Name = courseNameLabel.text
-        chosenClass.class_Units = courseUnitsLabel.text
-        chosenClass.catalog = self.className.catalog
-        chosenClass.subject = self.className.subject
-        terms[termIndex].addToClasses(chosenClass)
-        
+
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let chosenClass = Class(context: context)
+            chosenClass.class_Name = courseNameLabel.text
+            chosenClass.class_Units = courseUnitsLabel.text
+            chosenClass.catalog = self.className.catalog
+            chosenClass.subject = self.className.subject
+            terms[termIndex].addToClasses(chosenClass)
         
         print("terms count: \(terms.count)")
         

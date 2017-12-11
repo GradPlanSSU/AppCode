@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -161,6 +161,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seawolf" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-CE-mVa">
+                                <rect key="frame" x="82" y="265" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmz-rH-6lQ">
                                 <rect key="frame" x="97" y="98" width="221" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -168,8 +172,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3j-zt-azp">
+                                <rect key="frame" x="168" y="692" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <state key="normal" title="Add Term"/>
+                                <connections>
+                                    <action selector="addTerm:" destination="5Wr-ij-sqb" eventType="touchUpInside" id="YeQ-gB-3HJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlR-Ne-m5q">
+                                <rect key="frame" x="317" y="93" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <state key="normal" image="edit.png"/>
+                                <connections>
+                                    <action selector="editScheduleName:" destination="58a-bA-VJe" eventType="touchUpInside" id="Gk3-Ht-T1P"/>
+                                    <action selector="editScheduleName:" destination="5Wr-ij-sqb" eventType="touchUpInside" id="Ohg-69-00a"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-fX-gKu">
-                                <rect key="frame" x="20" y="155" width="374" height="516"/>
+                                <rect key="frame" x="20" y="148" width="374" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -211,23 +232,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3j-zt-azp">
-                                <rect key="frame" x="168" y="692" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <state key="normal" title="Add Term"/>
-                                <connections>
-                                    <action selector="addTerm:" destination="5Wr-ij-sqb" eventType="touchUpInside" id="YeQ-gB-3HJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlR-Ne-m5q">
-                                <rect key="frame" x="317" y="93" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" image="edit.png"/>
-                                <connections>
-                                    <action selector="editScheduleName:" destination="58a-bA-VJe" eventType="touchUpInside" id="Gk3-Ht-T1P"/>
-                                    <action selector="editScheduleName:" destination="5Wr-ij-sqb" eventType="touchUpInside" id="Ohg-69-00a"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="2a0-Ka-2Vk"/>
@@ -487,6 +491,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seawolf" translatesAutoresizingMaskIntoConstraints="NO" id="inh-0t-gty">
+                                <rect key="frame" x="83" y="304" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c9-b8-9km">
                                 <rect key="frame" x="20" y="81" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -666,7 +674,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXw-4e-EWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2249" y="527"/>
+            <point key="canvasLocation" x="2248" y="583"/>
         </scene>
         <!--Schedule 1-->
         <scene sceneID="Hn5-Hv-iWp">
@@ -724,6 +732,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8LG-Bs-QYo"/>
-        <segue reference="dp6-oy-4or"/>
+        <segue reference="Iw0-YA-Hld"/>
     </inferredMetricsTieBreakers>
 </document>

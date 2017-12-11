@@ -1,5 +1,5 @@
 //
-//  Class+CoreDataClass.swift
+//  Token+CoreDataClass.swift
 //  SSUSchedulePlanner
 //
 //  Created by student on 12/10/17.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Class)
-public class Class: NSManagedObject {
+@objc(Token)
+public class Token: NSManagedObject {
 
 }

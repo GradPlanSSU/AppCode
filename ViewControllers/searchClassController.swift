@@ -192,6 +192,10 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
             newcourses = newcourses.filter {$0.catalog > number.text!}
         }
         prevClasses.removeAll(keepingCapacity: false)
+        
+        newcourses = newcourses.sorted { $0.catalog < $1.catalog }
+        destinationVC.allCourses = newcourses
+        
         for term in terms {
             if terms.index(of: term)! < termIndex {
                 let prevCourseTmp = Array(term.classes!) as! [Class]
@@ -201,11 +205,13 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 }
             }
         }
+        
         var classesTakenAsStrings: [String] = [String]()
         for classTaken in prevClasses {
             print(classTaken.catalog)
             classesTakenAsStrings.append(classTaken.subject! + " " + classTaken.catalog!)
         }
+        
         let netHandler = NetRequestHandler(withURLString: "http://blue.cs.sonoma.edu:8000/courses/prerequisite").useParams().useToken()
         if let prereqs: Prerequisites? = netHandler.download_request() {
             for (i, _) in newcourses.enumerated().reversed() {
@@ -220,7 +226,14 @@ class searchClassController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
         }
         // newcourses.sort()
+        
         destinationVC.filteredCourses = newcourses
+        
+        
+        
+        
+        
+        // check filteredCourses
         
         /*
         for i in 0...newcourses.count-1 {

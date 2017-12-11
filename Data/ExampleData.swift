@@ -74,6 +74,7 @@ public var sectionsData: [Section] = [
         ])
 ]
 
+/*
 public var termData: [Section] = [
     Section(name: "Fall 2017", items: [
         Item(name: "CS 115", detail: ""),
@@ -88,6 +89,6 @@ public var termData: [Section] = [
         Item(name: "CALC 211", detail: ""),
         ])
 ]
-
+*/
 
 

@@ -16,15 +16,18 @@ class AddClassViewController: UITableViewController {
     var classes = [Class]()
     
     var filteredCourses = [Course]()
+    var allCourses = [Course]()
     
     var selectedCourse = Course()
+    var has_prereq = Bool()
     
     var terms = [Term]()
     var termIndex = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.has_prereq = false
     
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -32,19 +35,21 @@ class AddClassViewController: UITableViewController {
         filteredCourses = filteredCourses.sorted { $0.catalog < $1.catalog }
      //   filteredCourses = filteredCourses.sorted { $0.catalog > 
         
-        if self.filteredCourses.count > 0 {
-            for i in 0...self.filteredCourses.count - 1 {
+        if self.allCourses.count > 0 {
+            for i in 0...self.allCourses.count - 1 {
                 let course = Class(context:context)
-                course.class_Name = filteredCourses[i].course_title
-                course.catalog = filteredCourses[i].catalog
-                course.subject = filteredCourses[i].subject
-                course.class_Units = filteredCourses[i].units
+                course.class_Name = allCourses[i].course_title
+                course.catalog = allCourses[i].catalog
+                course.subject = allCourses[i].subject
+                course.class_Units = allCourses[i].units
                 classes.append(course)
             }
         }
+        
+        // classes = classes.sorted { $0.catalog! < $1.catalog!}
+      
        
-       // var course = Class(context: context)
-        // classes.append(course)
+     
         self.tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -55,6 +60,8 @@ class AddClassViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        has_prereq = false
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,12 +72,12 @@ class AddClassViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return classes.count
     }
 
@@ -105,6 +112,8 @@ class AddClassViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: delay) {
             let destinationVC : ClassDescriptionViewController = segue.destination as! ClassDescriptionViewController
             print("Preparing for Segue")
+            destinationVC.has_prerequisite = self.has_prereq
+            destinationVC.title = self.selectedCourse.subject + " " + self.selectedCourse.catalog
             destinationVC.className = self.selectedCourse
             destinationVC.terms = self.terms
             destinationVC.termIndex = self.termIndex
@@ -116,10 +125,15 @@ class AddClassViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("Inside didSelectRowAt")
-        selectedCourse = filteredCourses[indexPath.row]
-        selectedCourse.course_title = filteredCourses[indexPath.row].course_title
-        selectedCourse.catalog = filteredCourses[indexPath.row].catalog
-        selectedCourse.units = filteredCourses[indexPath.row].units
+        selectedCourse = allCourses[indexPath.row]
+        selectedCourse.course_title = allCourses[indexPath.row].course_title
+        selectedCourse.catalog = allCourses[indexPath.row].catalog
+        selectedCourse.units = allCourses[indexPath.row].units
+        
+        if !filteredCourses.contains(allCourses[indexPath.row]) {
+            self.has_prereq = true
+        }
+        
         print("Ending didSelectRowAt")
     //    self.performSegue(withIdentifier: "courseToDescriptionSegue", sender: indexPath);
        
